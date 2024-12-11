@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registration Erfolgreich</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: rgb(64, 0, 128);
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover:not(.active) {
+			background-color: rgb(255, 255, 255);
+		}
+
+		.active {
+			background-color: #4CAF50;
+		}
+
+		body {
+			background-color: rgb(64, 128, 128);
+		}
+
+		h1 {
+			color: rgb(0, 0, 0);
+			text-align: center;
+		}
+
+		p {
+			font-family: verdana;
+			font-size: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<ul id="menu" style="margin-top: 0.5%;">
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<p style="display: contents;">
+					Guten Tag, <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+				</p>
+				<input style="margin-left: 30px;" type="submit" value="Abmelden" />
+			</form>
+		</li>
+		<li> <a th:href="@{/list_users}">Alle Benutzer</a> </li>
+		<li> <a th:href="@{/meetings}">Meine Meetings</a> </li>
+		<li> <a th:href="@{/create_meeting}">Meeting erstellen</a> </li>
+		<li> <a th:href="@{/meeting_invites}">Meeting Einladungen</a> </li>
+		<li> <a th:href="@{/calendar}">Mein Kalendar</a> </li>
+	</ul>
+
+	<br>
+
+	<div class="container text-center">
+		<h3>Sie haben erfolgreich ein Meeting erstellt!</h3>
+		<h3>Ihr Zeitplan ist unten aufgeführt </h3>
+	</div>
+
+	<div style="margin: 30px">
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>Ersteller</th>
+					<th>Meeting mit</th>
+					<th>Start Zeit</th>
+					<th>End Zeit</th>
+					<th>Meeting Einladungen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user: ${listMeetings}">
+					<td th:text="${user.creator}">Ersteller</td>
+					<td th:text="${user.meetingWith}">Meeting mit</td>
+					<td th:text="${user.startTime}">Start Zeit</td>
+					<td th:text="${user.endTime}">End Zeit</td>
+					<td th:text="${user.flag == 1} ? 'Accepted' : 'Created'">erstellt</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+</body>
+
+</html>

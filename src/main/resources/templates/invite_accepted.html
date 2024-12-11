@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registration Success</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: rgb(64, 0, 128);
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover:not(.active) {
+			background-color: rgb(255, 255, 255);
+		}
+
+		.active {
+			background-color: #4CAF50;
+		}
+	</style>
+</head>
+
+<body>
+
+	<ul id="menu" style="margin-top: 0.5%;">
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<p style="display: contents;">
+					Guten Tag, <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+				</p>
+				<input style="margin-left: 30px;" type="submit" value="Abmelden" />
+			</form>
+		</li>
+		<li> <a th:href="@{/list_users}">Alle Benutzer</a> </li>
+		<li> <a th:href="@{/meetings}">Meine Meetings</a> </li>
+		<li> <a th:href="@{/create_meeting}">Meeting erstellen</a> </li>
+		<li> <a th:href="@{/meeting_invites}">Meeting Einladungen</a> </li>
+		<li> <a th:href="@{/calendar}">Mein Kalendar</a> </li>
+	</ul>
+
+	<br>
+
+	<div class="container text-center">
+		<h3>Du hast erfolgreich das Meeting akzeptiert</h3>
+
+	</div>
+
+
+
+</body>
+
+</html>

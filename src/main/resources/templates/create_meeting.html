@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registration Page</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: rgb(64, 0, 128);
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover:not(.active) {
+			background-color: rgb(255, 255, 255);
+		}
+
+		.active {
+			background-color: #4CAF50;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: rgb(64, 0, 128);
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover:not(.active) {
+			background-color: rgb(255, 255, 255);
+		}
+
+		.active {
+			background-color: #4CAF50;
+		}
+
+		body {
+			background-color: rgb(64, 128, 128);
+		}
+
+		h1 {
+			color: rgb(0, 0, 0);
+			text-align: center;
+		}
+
+		p {
+			font-family: verdana;
+			font-size: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<ul id="menu" style="margin-top: 0.5%;">
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<p style="display: contents;">
+					Guten Tag, <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+				</p>
+				<input style="margin-left: 30px;" type="submit" value="Abmelden" />
+			</form>
+		</li>
+		<li> <a th:href="@{/list_users}">Alle Benutzer</a> </li>
+		<li> <a th:href="@{/meetings}">Meine Meetings</a> </li>
+		<li> <a th:href="@{/create_meeting}">Meeting erstellen</a> </li>
+		<li> <a th:href="@{/meeting_invites}">Meeting Einladungen</a> </li>
+		<li> <a th:href="@{/calendar}">Mein Kalendar</a> </li>
+	</ul>
+
+	<br>
+
+	<div class="container text-center">
+		<h1>Meeting erstellen</h1>
+
+		<form th:action="@{/meeting_register}" th:object="${meeting}" method="post"
+			style="max-width: 600px; margin: 20px auto;">
+			<div class="m-3">
+
+				<div class="form-group">
+					<label>Ersteller: [[${#request.userPrincipal.principal.fullName}]] </label>
+
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Meeting mit: </label>
+					<div class="col-8">
+						<select class="form-control" field="*{meetingWith}" id="meetingWith" name="meetingWith">
+							<option th:each="test : ${listUsers}" th:value="${test.email}" th:text="${test.firstName}">
+							</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">Start Zeit</label>
+					<div class="col-8">
+						<input type="datetime-local" field="*{startTime}" name="startTime" class="form-control"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-4 col-form-label">End Zeit: </label>
+					<div class="col-8">
+						<input type="datetime-local" field="*{endTime}" name="endTime" class="form-control" required />
+					</div>
+				</div>
+
+				<div>
+					<button type="submit" class="btn btn-primary">Erstellen</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+</body>
+
+</html>

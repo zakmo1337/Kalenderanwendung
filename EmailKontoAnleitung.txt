@@ -1,0 +1,13 @@
+Der Email Sender für diese Application ist SpringbootMailer1337@gmail.com. 
+Die Email sendet mit Schedule von einen bestimmmten Intervall eine Erinnerung.
+Es kann aber eine x beliebige Email verwendet werden. 
+Weitere Information dazu kontaktieren Sie Zakaria Mowafek inhaber dieser Web Application.
+
+Sender:
+Email: Springbootmailer1337@gmail.com
+Passwort:Tester1337
+
+
+Empfänger:
+Email:SpringBootMailReceiver@protonmail.com
+Passwort: Springboot1337

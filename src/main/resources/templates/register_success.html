@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registration Success</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		body {
+			background-color: rgb(64, 128, 128);
+		}
+
+		h1 {
+			color: white;
+			text-align: center;
+		}
+
+		p {
+			font-family: verdana;
+			font-size: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container text-center" style="margin-top: 10%">
+		<h3>Du hast dich erfolgreich registriert!</h3>
+		<h4><a th:href="@{/login}" Klick hier zum Login</a></h4>
+		<button onclick="window.location.href = 'http://localhost:8080/login';">Hier klicken</button>
+	</div>
+
+</body>
+
+</html>
